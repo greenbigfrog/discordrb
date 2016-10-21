@@ -291,6 +291,12 @@ module Discordrb::Voice
 
     alias_method :play_stream, :play_io
 
+    def listen
+      #loop do
+        @udp.receive_audio
+      #end
+    end
+
     private
 
     # Plays the data from the @io stream as Discord requires it

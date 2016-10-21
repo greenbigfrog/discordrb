@@ -57,6 +57,13 @@ module Discordrb::Voice
       @ssrc = ssrc
     end
 
+    def receive_audio
+      msg = @socket.recvfrom(1920)
+      puts 'new packet:'
+      puts msg
+      msg
+    end
+
     # Waits for a UDP discovery reply, and returns the sent data.
     # @return [Array(String, Integer)] the IP and port received from the discovery reply.
     def receive_discovery_reply
