@@ -2594,14 +2594,16 @@ module Discordrb
     # Bans a user from this server.
     # @param user [User, #resolve_id] The user to ban.
     # @param message_days [Integer] How many days worth of messages sent by the user should be deleted.
-    def ban(user, message_days = 0)
-      API::Server.ban_user(@bot.token, @id, user.resolve_id, message_days)
+    # @param reason [String] Reason to appear in the audit log for this action
+    def ban(user, message_days = 0, reason: nil)
+      API::Server.ban_user(@bot.token, @id, user.resolve_id, message_days, reason)
     end
 
     # Unbans a previously banned user from this server.
     # @param user [User, #resolve_id] The user to unban.
-    def unban(user)
-      API::Server.unban_user(@bot.token, @id, user.resolve_id)
+    # @param reason [String] Reason to appear in the audit log for this action
+    def unban(user, reason: nil)
+      API::Server.unban_user(@bot.token, @id, user.resolve_id, reason)
     end
 
     # Kicks a user from this server.
